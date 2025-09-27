@@ -1,6 +1,6 @@
 ## pub cmd
-flutter build web --release --base-href /parkour_game/
-flutter build web --web-renderer html --release --base-href /parkour_game/
+flutter build web --release --base-href /XJY.GAME.MINI.parkourGame/
+flutter build web --no-web-resources-cdn --release --base-href /XJY.GAME.MINI.parkourGame/
 
 > cd /d path
 # pub cmd

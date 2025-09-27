@@ -1,4 +1,4 @@
-# parkour_game
+# XJY.GAME.MINI.parkourGame
 
 ## website
-[https://shadowplusing.website/parkour_game/](https://shadowplusing.website/parkour_game/)
+[https://shadowplusing.cn/XJY.GAME.MINI.parkourGame/](https://shadowplusing.cn/XJY.GAME.MINI.parkourGame/)
