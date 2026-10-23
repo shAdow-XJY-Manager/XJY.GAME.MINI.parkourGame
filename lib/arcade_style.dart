@@ -247,3 +247,25 @@ class GamePanel extends StatelessWidget {
     },
   );
 }
+
+Future<bool> confirmReset(BuildContext context, String action) async =>
+    await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('$action？'),
+        scrollable: true,
+        content: const Text('当前未完成的进度将被清除，无法撤销。'),
+        actions: [
+          TextButton(
+            autofocus: true,
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('保留进度'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text('确认$action'),
+          ),
+        ],
+      ),
+    ) ??
+    false;

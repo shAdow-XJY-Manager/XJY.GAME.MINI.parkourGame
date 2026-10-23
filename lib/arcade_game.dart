@@ -159,7 +159,27 @@ class _RunnerArcadeState extends State<RunnerArcade>
     if (sound) platform.playTone('tap');
   }
 
-  void _retry([int? level]) {
+  bool confirmingReset = false;
+  Future<void> _retry([int? level]) async {
+    if (confirmingReset) return;
+    if (level == game.level &&
+        (game.status == RunnerStatus.ready ||
+            game.status == RunnerStatus.paused ||
+            game.status == RunnerStatus.playing))
+      return;
+    if (game.status == RunnerStatus.playing ||
+        game.status == RunnerStatus.paused) {
+      final resume = game.status == RunnerStatus.playing;
+      _pause();
+      confirmingReset = true;
+      final accepted = await confirmReset(context, '重新开始路线');
+      if (!mounted) return;
+      confirmingReset = false;
+      if (!accepted) {
+        if (resume) _resume();
+        return;
+      }
+    }
     setState(() {
       game = RunnerEngine(level: level ?? game.level);
       previous = null;
